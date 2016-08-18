@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA9B8C471D6661C9004DA9E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B8C461D6661C9004DA9E2 /* AppDelegate.swift */; };
+		EA9B8C491D6661C9004DA9E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B8C481D6661C9004DA9E2 /* ViewController.swift */; };
+		EA9B8C4C1D6661C9004DA9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B8C4A1D6661C9004DA9E2 /* Main.storyboard */; };
+		EA9B8C4E1D6661C9004DA9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9B8C4D1D6661C9004DA9E2 /* Assets.xcassets */; };
+		EA9B8C511D6661C9004DA9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9B8C4F1D6661C9004DA9E2 /* LaunchScreen.storyboard */; };
+		EA9B8C5C1D6661C9004DA9E2 /* YouplusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B8C5B1D6661C9004DA9E2 /* YouplusTests.swift */; };
+		EA9B8C671D6661C9004DA9E2 /* YouplusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9B8C661D6661C9004DA9E2 /* YouplusUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA9B8C581D6661C9004DA9E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9B8C3B1D6661C8004DA9E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA9B8C421D6661C8004DA9E2;
+			remoteInfo = Youplus;
+		};
+		EA9B8C631D6661C9004DA9E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9B8C3B1D6661C8004DA9E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA9B8C421D6661C8004DA9E2;
+			remoteInfo = Youplus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA9B8C431D6661C8004DA9E2 /* Youplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9B8C461D6661C9004DA9E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA9B8C481D6661C9004DA9E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA9B8C4B1D6661C9004DA9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA9B8C4D1D6661C9004DA9E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA9B8C501D6661C9004DA9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EA9B8C521D6661C9004DA9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9B8C571D6661C9004DA9E2 /* YouplusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouplusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9B8C5B1D6661C9004DA9E2 /* YouplusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouplusTests.swift; sourceTree = "<group>"; };
+		EA9B8C5D1D6661C9004DA9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9B8C621D6661C9004DA9E2 /* YouplusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouplusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9B8C661D6661C9004DA9E2 /* YouplusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouplusUITests.swift; sourceTree = "<group>"; };
+		EA9B8C681D6661C9004DA9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA9B8C401D6661C8004DA9E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C541D6661C9004DA9E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C5F1D6661C9004DA9E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA9B8C3A1D6661C8004DA9E2 = {
+			isa = PBXGroup;
+			children = (
+				EA9B8C451D6661C9004DA9E2 /* Youplus */,
+				EA9B8C5A1D6661C9004DA9E2 /* YouplusTests */,
+				EA9B8C651D6661C9004DA9E2 /* YouplusUITests */,
+				EA9B8C441D6661C8004DA9E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA9B8C441D6661C8004DA9E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B8C431D6661C8004DA9E2 /* Youplus.app */,
+				EA9B8C571D6661C9004DA9E2 /* YouplusTests.xctest */,
+				EA9B8C621D6661C9004DA9E2 /* YouplusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA9B8C451D6661C9004DA9E2 /* Youplus */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B8C461D6661C9004DA9E2 /* AppDelegate.swift */,
+				EA9B8C481D6661C9004DA9E2 /* ViewController.swift */,
+				EA9B8C4A1D6661C9004DA9E2 /* Main.storyboard */,
+				EA9B8C4D1D6661C9004DA9E2 /* Assets.xcassets */,
+				EA9B8C4F1D6661C9004DA9E2 /* LaunchScreen.storyboard */,
+				EA9B8C521D6661C9004DA9E2 /* Info.plist */,
+			);
+			path = Youplus;
+			sourceTree = "<group>";
+		};
+		EA9B8C5A1D6661C9004DA9E2 /* YouplusTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B8C5B1D6661C9004DA9E2 /* YouplusTests.swift */,
+				EA9B8C5D1D6661C9004DA9E2 /* Info.plist */,
+			);
+			path = YouplusTests;
+			sourceTree = "<group>";
+		};
+		EA9B8C651D6661C9004DA9E2 /* YouplusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B8C661D6661C9004DA9E2 /* YouplusUITests.swift */,
+				EA9B8C681D6661C9004DA9E2 /* Info.plist */,
+			);
+			path = YouplusUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA9B8C421D6661C8004DA9E2 /* Youplus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9B8C6B1D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "Youplus" */;
+			buildPhases = (
+				EA9B8C3F1D6661C8004DA9E2 /* Sources */,
+				EA9B8C401D6661C8004DA9E2 /* Frameworks */,
+				EA9B8C411D6661C8004DA9E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Youplus;
+			productName = Youplus;
+			productReference = EA9B8C431D6661C8004DA9E2 /* Youplus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA9B8C561D6661C9004DA9E2 /* YouplusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9B8C6E1D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "YouplusTests" */;
+			buildPhases = (
+				EA9B8C531D6661C9004DA9E2 /* Sources */,
+				EA9B8C541D6661C9004DA9E2 /* Frameworks */,
+				EA9B8C551D6661C9004DA9E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA9B8C591D6661C9004DA9E2 /* PBXTargetDependency */,
+			);
+			name = YouplusTests;
+			productName = YouplusTests;
+			productReference = EA9B8C571D6661C9004DA9E2 /* YouplusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EA9B8C611D6661C9004DA9E2 /* YouplusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9B8C711D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "YouplusUITests" */;
+			buildPhases = (
+				EA9B8C5E1D6661C9004DA9E2 /* Sources */,
+				EA9B8C5F1D6661C9004DA9E2 /* Frameworks */,
+				EA9B8C601D6661C9004DA9E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA9B8C641D6661C9004DA9E2 /* PBXTargetDependency */,
+			);
+			name = YouplusUITests;
+			productName = YouplusUITests;
+			productReference = EA9B8C621D6661C9004DA9E2 /* YouplusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA9B8C3B1D6661C8004DA9E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Huge American Corporation";
+				TargetAttributes = {
+					EA9B8C421D6661C8004DA9E2 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					EA9B8C561D6661C9004DA9E2 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = EA9B8C421D6661C8004DA9E2;
+					};
+					EA9B8C611D6661C9004DA9E2 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = EA9B8C421D6661C8004DA9E2;
+					};
+				};
+			};
+			buildConfigurationList = EA9B8C3E1D6661C8004DA9E2 /* Build configuration list for PBXProject "Youplus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA9B8C3A1D6661C8004DA9E2;
+			productRefGroup = EA9B8C441D6661C8004DA9E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA9B8C421D6661C8004DA9E2 /* Youplus */,
+				EA9B8C561D6661C9004DA9E2 /* YouplusTests */,
+				EA9B8C611D6661C9004DA9E2 /* YouplusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA9B8C411D6661C8004DA9E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9B8C511D6661C9004DA9E2 /* LaunchScreen.storyboard in Resources */,
+				EA9B8C4E1D6661C9004DA9E2 /* Assets.xcassets in Resources */,
+				EA9B8C4C1D6661C9004DA9E2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C551D6661C9004DA9E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C601D6661C9004DA9E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA9B8C3F1D6661C8004DA9E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9B8C491D6661C9004DA9E2 /* ViewController.swift in Sources */,
+				EA9B8C471D6661C9004DA9E2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C531D6661C9004DA9E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9B8C5C1D6661C9004DA9E2 /* YouplusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9B8C5E1D6661C9004DA9E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9B8C671D6661C9004DA9E2 /* YouplusUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA9B8C591D6661C9004DA9E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA9B8C421D6661C8004DA9E2 /* Youplus */;
+			targetProxy = EA9B8C581D6661C9004DA9E2 /* PBXContainerItemProxy */;
+		};
+		EA9B8C641D6661C9004DA9E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA9B8C421D6661C8004DA9E2 /* Youplus */;
+			targetProxy = EA9B8C631D6661C9004DA9E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA9B8C4A1D6661C9004DA9E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA9B8C4B1D6661C9004DA9E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EA9B8C4F1D6661C9004DA9E2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA9B8C501D6661C9004DA9E2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA9B8C691D6661C9004DA9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EA9B8C6A1D6661C9004DA9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA9B8C6C1D6661C9004DA9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Youplus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.Youplus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EA9B8C6D1D6661C9004DA9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Youplus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.Youplus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EA9B8C6F1D6661C9004DA9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YouplusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.YouplusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Youplus.app/Youplus";
+			};
+			name = Debug;
+		};
+		EA9B8C701D6661C9004DA9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YouplusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.YouplusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Youplus.app/Youplus";
+			};
+			name = Release;
+		};
+		EA9B8C721D6661C9004DA9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YouplusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.YouplusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Youplus;
+			};
+			name = Debug;
+		};
+		EA9B8C731D6661C9004DA9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YouplusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.YouplusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Youplus;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA9B8C3E1D6661C8004DA9E2 /* Build configuration list for PBXProject "Youplus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9B8C691D6661C9004DA9E2 /* Debug */,
+				EA9B8C6A1D6661C9004DA9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA9B8C6B1D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "Youplus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9B8C6C1D6661C9004DA9E2 /* Debug */,
+				EA9B8C6D1D6661C9004DA9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EA9B8C6E1D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "YouplusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9B8C6F1D6661C9004DA9E2 /* Debug */,
+				EA9B8C701D6661C9004DA9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EA9B8C711D6661C9004DA9E2 /* Build configuration list for PBXNativeTarget "YouplusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9B8C721D6661C9004DA9E2 /* Debug */,
+				EA9B8C731D6661C9004DA9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA9B8C3B1D6661C8004DA9E2 /* Project object */;
+}
