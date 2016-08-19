@@ -32,7 +32,11 @@
                                 <items>
                                     <navigationItem id="7dk-Tt-D2P">
                                         <leftBarButtonItems>
-                                            <barButtonItem systemItem="add" id="by0-6S-b5A"/>
+                                            <barButtonItem systemItem="add" id="by0-6S-b5A">
+                                                <connections>
+                                                    <action selector="addMessage:" destination="BYZ-38-t0r" id="Dyx-J1-nkA"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem id="37c-xn-Mgn"/>
                                         </leftBarButtonItems>
                                     </navigationItem>

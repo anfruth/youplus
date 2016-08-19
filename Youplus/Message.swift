@@ -13,9 +13,9 @@ class Message: NSObject, NSCoding {
     private(set) var avatarFilename: String
     private(set) var friendName: String
     private(set) var lastMessage: String
-    private(set) var lastMessageReceivedTime: NSDate
+    private(set) var lastMessageReceivedTime: NSDate?
     
-    init(avatarFilename: String, friendName: String, lastMessage: String, lastMessageReceivedTime: NSDate) {
+    init(avatarFilename: String, friendName: String, lastMessage: String, lastMessageReceivedTime: NSDate?) {
         self.avatarFilename = avatarFilename
         self.friendName = friendName
         self.lastMessage = lastMessage
@@ -43,6 +43,10 @@ class Message: NSObject, NSCoding {
         coder.encodeObject(friendName, forKey: "friendName")
         coder.encodeObject(lastMessage, forKey: "lastMessage")
         coder.encodeObject(lastMessageReceivedTime, forKey: "lastMessageReceivedTime")
+    }
+    
+    func setLastMessageReceivedTimeToNow() {
+        lastMessageReceivedTime = NSDate()
     }
     
     func getPathInDocumentDirectory(componentToAppend: String) -> String? {
