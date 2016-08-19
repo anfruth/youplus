@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QuartzCore
 
 class MessageCell: UITableViewCell {
 
@@ -44,5 +43,49 @@ class MessageCell: UITableViewCell {
             print("avatar frame not created correctly")
         }
     }
+    
+    private func setupNameFrame() {
+        nameFrame = UILabel()
+        nameFrame?.text = "Shite"
+        
+        if nameFrame != nil {
+            addSubview(nameFrame!)
+            
+            let cellMargins = layoutMarginsGuide
+            let avatarMargins = avatarFrame?.layoutMarginsGuide
+            nameFrame?.translatesAutoresizingMaskIntoConstraints = false
+            
+            setNameFrameConstraints(cellMargins, avatarMargins: avatarMargins)
+            
+        }
+    }
+    
+    private func setNameFrameConstraints(cellMargins: UILayoutGuide, avatarMargins: UILayoutGuide?) {
+        
+        guard let horizontalConstraint = nameFrame?.leadingAnchor.constraintEqualToAnchor(avatarMargins?.trailingAnchor, constant: 30) else {
+            print("problem with nameFrame or avatarMargins not being created")
+            return
+        }
+        
+        guard let verticalConstraint = nameFrame?.centerYAnchor.constraintEqualToAnchor(cellMargins.centerYAnchor, constant: -20) else {
+            print("problem with nameFrame not being created")
+            return
+        }
+        
+        guard let widthConstraint = nameFrame?.widthAnchor.constraintEqualToAnchor(nil, constant: 100) else {
+            print("problem with nameFrame not being created")
+            return
+        }
+        
+        guard let heightConstraint = nameFrame?.heightAnchor.constraintEqualToAnchor(nil, constant: 100) else {
+            print("problem with nameFrame not being created")
+            return
+        }
+        
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+    }
+    
+    
+    
     
 }
