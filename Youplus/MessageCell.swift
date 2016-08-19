@@ -14,15 +14,15 @@ class MessageCell: UITableViewCell {
     private var nameFrame: UILabel?
     private var messageFrame: UITextView?
     private var timeFrame: UILabel?
-    private var cellMargins: UILayoutGuide! // as must be automatically set
+    private var cellMargins: UILayoutGuide! // must be automatically set
     
-    func setupSubViews() {
+    func setupSubViews(name: String, message: String, date: NSDate) {
         cellMargins = layoutMarginsGuide
         
         setupAvatarFrame()
-        setupNameFrame()
-        setupMessageFrame()
-        setupTimeFrame()
+        setupNameFrame(name)
+        setupMessageFrame(message)
+        setupTimeFrame(date)
     }
     
     private func setupAvatarFrame() {
@@ -47,9 +47,9 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func setupNameFrame() {
+    private func setupNameFrame(name: String) {
         nameFrame = UILabel()
-        nameFrame?.text = "Shite"
+        nameFrame?.text = name
         
         if nameFrame != nil {
             addSubview(nameFrame!)
@@ -62,10 +62,10 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func setupMessageFrame() {
+    private func setupMessageFrame(message: String) {
         messageFrame = UITextView()
         
-        messageFrame?.text = "I like to dance through the night among other things. It's great to stay up late when you're really work on something. Awesome times my friend. Awesome times!"
+        messageFrame?.text = message
         messageFrame?.textContainer.maximumNumberOfLines = 2
         messageFrame?.textContainer.lineBreakMode = .ByTruncatingTail
         messageFrame?.userInteractionEnabled = false
@@ -83,12 +83,12 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func setupTimeFrame() {
+    private func setupTimeFrame(date: NSDate) {
         timeFrame = UILabel()
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.systemTimeZone()
         dateFormatter.dateFormat = "MMM dd, HH:mm"
-        timeFrame?.text = dateFormatter.stringFromDate(NSDate())
+        timeFrame?.text = dateFormatter.stringFromDate(date)
         timeFrame?.textAlignment = .Right
         
         if timeFrame != nil {

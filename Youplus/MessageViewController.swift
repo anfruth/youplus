@@ -36,7 +36,14 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
             return UITableViewCell()
         }
         
-        cell.setupSubViews()
+        let row = indexPath.row
+        
+        guard let message = messages?[row] else {
+            print("could not get a message from messages array")
+            return UITableViewCell()
+        }
+        
+        cell.setupSubViews(message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime)
         
         return cell
     }

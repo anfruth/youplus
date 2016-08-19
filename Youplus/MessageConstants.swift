@@ -14,11 +14,11 @@ struct MessageConstants {
     static let avatarName = "avatar"
     static let messageCellID = "messageCell"
     
-    private static let date1 = NSDate(timeIntervalSinceReferenceDate: 100000)
-    private static let date2 = NSDate(timeIntervalSinceReferenceDate: 100002)
-    private static let date3 = NSDate(timeIntervalSinceReferenceDate: 1000007)
-    private static let date4 = NSDate(timeIntervalSinceReferenceDate: 1000009)
-    private static let date5 = NSDate(timeIntervalSinceReferenceDate: 10000012)
+    private static let date1 = NSDate(timeIntervalSinceReferenceDate: 493270010)
+    private static let date2 = NSDate(timeIntervalSinceReferenceDate: 493271028)
+    private static let date3 = NSDate(timeIntervalSinceReferenceDate: 493272028)
+    private static let date4 = NSDate(timeIntervalSinceReferenceDate: 493283028)
+    private static let date5 = NSDate(timeIntervalSinceReferenceDate: 493293109)
     
     static let message1 = Message(avatarFilename: avatarName, friendName: "Andrew", lastMessage: "How's buddy doing?", lastMessageReceivedTime: date1)
     
@@ -28,6 +28,6 @@ struct MessageConstants {
     
     static let message4 = Message(avatarFilename: avatarName, friendName: "Frank Underwood", lastMessage: "You know what to do. (Grimace)", lastMessageReceivedTime: date4)
     
-    static let message5 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "I'm not married to a hobbit.", lastMessageReceivedTime: date5)
+    static let message5 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "I'm not married to a hobbit. I am married to a beautiful woman. Just because she smokes a pipe and lives underground does not make her a hobbit.", lastMessageReceivedTime: date5)
     
 }
