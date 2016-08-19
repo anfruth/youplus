@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -24,6 +23,7 @@
                                 <rect key="frame" x="0.0" y="36" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="L6n-IW-LgC"/>
+                                    <constraint firstAttribute="height" constant="44" id="kib-4P-P52"/>
                                 </constraints>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
@@ -44,10 +44,16 @@
                                 </variation>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youplus" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Zj-KAl">
-                                <rect key="frame" x="215" y="36" width="170" height="44"/>
+                                <rect key="frame" x="225" y="36" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="WEs-rf-6Pw"/>
+                                    <constraint firstAttribute="width" constant="150" id="h69-yc-zwe"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WEs-rf-6Pw"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-Cs-hpy">
                                 <rect key="frame" x="0.0" y="80" width="600" height="520"/>
@@ -83,9 +89,10 @@
                             <constraint firstItem="4bA-Zj-KAl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7cr-mH-UlJ"/>
                             <constraint firstItem="4bA-Zj-KAl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="8VA-uJ-QqB"/>
                             <constraint firstItem="EFO-Cs-hpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="9Z5-Gq-AHa"/>
+                            <constraint firstItem="4bA-Zj-KAl" firstAttribute="height" secondItem="97t-9v-hI5" secondAttribute="height" id="J9v-2M-6mL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EFO-Cs-hpy" secondAttribute="trailing" constant="-20" id="R14-vv-YkE"/>
                             <constraint firstItem="EFO-Cs-hpy" firstAttribute="top" secondItem="97t-9v-hI5" secondAttribute="bottom" id="Vs1-jY-MII"/>
-                            <constraint firstItem="4bA-Zj-KAl" firstAttribute="width" secondItem="97t-9v-hI5" secondAttribute="width" multiplier="17/60" id="XKK-LH-wf8"/>
+                            <constraint firstItem="4bA-Zj-KAl" firstAttribute="width" secondItem="97t-9v-hI5" secondAttribute="width" id="XKK-LH-wf8"/>
                             <constraint firstItem="EFO-Cs-hpy" firstAttribute="top" secondItem="97t-9v-hI5" secondAttribute="bottom" id="aN5-2k-RCf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="97t-9v-hI5" secondAttribute="trailing" constant="-20" id="dun-fA-Aah"/>
                             <constraint firstItem="97t-9v-hI5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="j5Z-VK-5H3"/>
@@ -99,6 +106,7 @@
                                 <exclude reference="ncJ-go-dLZ"/>
                                 <exclude reference="Vs1-jY-MII"/>
                                 <exclude reference="aN5-2k-RCf"/>
+                                <exclude reference="XKK-LH-wf8"/>
                             </mask>
                         </variation>
                     </view>

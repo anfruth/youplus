@@ -14,12 +14,15 @@ class MessageCell: UITableViewCell {
     private var nameFrame: UILabel?
     private var messageFrame: UITextView?
     private var timeFrame: UILabel?
+    private var cellMargins: UILayoutGuide! // as must be automatically set
     
     func setupSubViews() {
+        cellMargins = layoutMarginsGuide
+        
         setupAvatarFrame()
         setupNameFrame()
-//        setupMessageFrame()
-//        setupTimeFrame()
+        setupMessageFrame()
+        setupTimeFrame()
     }
     
     private func setupAvatarFrame() {
@@ -51,39 +54,115 @@ class MessageCell: UITableViewCell {
         if nameFrame != nil {
             addSubview(nameFrame!)
             
-            let cellMargins = layoutMarginsGuide
             let avatarMargins = avatarFrame?.layoutMarginsGuide
             nameFrame?.translatesAutoresizingMaskIntoConstraints = false
             
-            setNameFrameConstraints(cellMargins, avatarMargins: avatarMargins)
+            setNameFrameConstraints(avatarMargins)
             
         }
     }
     
-    private func setNameFrameConstraints(cellMargins: UILayoutGuide, avatarMargins: UILayoutGuide?) {
+    private func setupMessageFrame() {
+        messageFrame = UITextView()
         
-        guard let horizontalConstraint = nameFrame?.leadingAnchor.constraintEqualToAnchor(avatarMargins?.trailingAnchor, constant: 30) else {
-            print("problem with nameFrame or avatarMargins not being created")
+        messageFrame?.text = "I like to dance through the night among other things. It's great to stay up late when you're really work on something. Awesome times my friend. Awesome times!"
+        messageFrame?.textContainer.maximumNumberOfLines = 2
+        messageFrame?.textContainer.lineBreakMode = .ByTruncatingTail
+        messageFrame?.userInteractionEnabled = false
+        messageFrame?.editable = false
+        
+        if messageFrame != nil {
+            addSubview(messageFrame!)
+            
+            let avatarMargins = avatarFrame?.layoutMarginsGuide
+            let nameMargins = nameFrame?.layoutMarginsGuide
+            messageFrame?.translatesAutoresizingMaskIntoConstraints = false
+            
+            setMessageFrameConstraints(avatarMargins, nameMargins: nameMargins)
+            
+        }
+    }
+    
+    private func setupTimeFrame() {
+        timeFrame = UILabel()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.systemTimeZone()
+        dateFormatter.dateFormat = "MMM dd, HH:mm"
+        timeFrame?.text = dateFormatter.stringFromDate(NSDate())
+        timeFrame?.textAlignment = .Right
+        
+        if timeFrame != nil {
+            addSubview(timeFrame!)
+            
+            timeFrame?.translatesAutoresizingMaskIntoConstraints = false
+            setTimeFrameContraints()
+        }
+    }
+    
+    private func setNameFrameConstraints(avatarMargins: UILayoutGuide?) {
+        
+        guard let horizontalConstraint = nameFrame?.leadingAnchor.constraintEqualToAnchor(avatarMargins?.trailingAnchor, constant: 20) else {
             return
         }
         
         guard let verticalConstraint = nameFrame?.centerYAnchor.constraintEqualToAnchor(cellMargins.centerYAnchor, constant: -20) else {
-            print("problem with nameFrame not being created")
             return
         }
         
-        guard let widthConstraint = nameFrame?.widthAnchor.constraintEqualToAnchor(nil, constant: 100) else {
-            print("problem with nameFrame not being created")
+        guard let heightConstraint = nameFrame?.heightAnchor.constraintEqualToAnchor(nil, constant: 20) else {
             return
         }
         
-        guard let heightConstraint = nameFrame?.heightAnchor.constraintEqualToAnchor(nil, constant: 100) else {
-            print("problem with nameFrame not being created")
-            return
-        }
-        
-        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, heightConstraint])
     }
+    
+    private func setMessageFrameConstraints(avatarMargins: UILayoutGuide?, nameMargins: UILayoutGuide?) {
+        
+        guard let horizontalConstraint = messageFrame?.leadingAnchor.constraintEqualToAnchor(nameMargins?.leadingAnchor, constant: -12) else { // -12 needed because of margin built into UITextView
+            return
+        }
+        
+        guard let verticalConstraint = messageFrame?.topAnchor.constraintEqualToAnchor(nameMargins?.bottomAnchor, constant: 10) else {
+            return
+        }
+        
+        guard let widthConstraintRightSide = messageFrame?.trailingAnchor.constraintEqualToAnchor(cellMargins?.trailingAnchor, constant: -20) else {
+            return
+        }
+        
+        guard let heightConstraint = messageFrame?.heightAnchor.constraintEqualToAnchor(nil, constant: 40) else {
+            return
+        }
+        
+         NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraintRightSide, heightConstraint])
+    }
+    
+    private func setTimeFrameContraints() {
+        
+        guard let horizontalConstraint = timeFrame?.trailingAnchor.constraintEqualToAnchor(cellMargins.trailingAnchor, constant: -10) else {
+            return
+        }
+        
+        guard let horizontalConstraintLeft = timeFrame?.leadingAnchor.constraintEqualToAnchor(nameFrame?.trailingAnchor, constant: -20) else {
+            return
+        }
+        
+        guard let verticalConstraint = timeFrame?.centerYAnchor.constraintEqualToAnchor(nameFrame?.centerYAnchor) else {
+            return
+        }
+        
+        guard let widthConstraint = timeFrame?.widthAnchor.constraintEqualToAnchor(nil, constant: 120) else {
+            return
+        }
+        
+        guard let heightConstraint = timeFrame?.heightAnchor.constraintEqualToAnchor(nameFrame?.heightAnchor) else {
+            return
+        }
+        
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, horizontalConstraintLeft, verticalConstraint, widthConstraint, heightConstraint])
+    }
+    
+    
     
     
     
