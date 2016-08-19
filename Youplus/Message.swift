@@ -45,4 +45,17 @@ class Message: NSObject, NSCoding {
         coder.encodeObject(lastMessageReceivedTime, forKey: "lastMessageReceivedTime")
     }
     
+    func getPathInDocumentDirectory(componentToAppend: String) -> String? {
+        let manager = NSFileManager.defaultManager()
+        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first
+        
+        guard let unwrappedURL = url else {
+            print("unable to get first url in user domain document directory")
+            return nil
+        }
+        
+        return unwrappedURL.URLByAppendingPathComponent(componentToAppend).path
+    }
+    
+    
 }

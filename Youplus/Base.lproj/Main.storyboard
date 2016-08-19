@@ -20,35 +20,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-Cs-hpy">
-                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="520" id="zj8-0P-ShR"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="7sl-4t-nZ5">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sl-4t-nZ5" id="ak1-xT-4jZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="zj8-0P-ShR"/>
-                                    </mask>
-                                </variation>
-                            </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youplus" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Zj-KAl">
-                                <rect key="frame" x="215" y="36" width="170" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="WEs-rf-6Pw"/>
-                                </constraints>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97t-9v-hI5">
                                 <rect key="frame" x="0.0" y="36" width="600" height="44"/>
                                 <constraints>
@@ -72,6 +43,39 @@
                                     </mask>
                                 </variation>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youplus" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Zj-KAl">
+                                <rect key="frame" x="215" y="36" width="170" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WEs-rf-6Pw"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-Cs-hpy">
+                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="520" id="zj8-0P-ShR"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="100" id="7sl-4t-nZ5" customClass="MessageCell" customModule="Youplus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sl-4t-nZ5" id="ak1-xT-4jZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zj8-0P-ShR"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="amf-cO-kze"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7Ue-Wp-84n"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,6 +102,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="messageTable" destination="EFO-Cs-hpy" id="9Pa-rY-sRd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
