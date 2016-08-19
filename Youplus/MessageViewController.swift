@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MessageViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var messageTable: UITableView!
     
@@ -30,19 +30,35 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
             return
         }
         
-        nextMessage.setLastMessageReceivedTimeToNow()
         messages?.removeLast()
-        messagesToAdd?.removeFirst()
-        messages?.insert(nextMessage, atIndex: 0)
+        messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: nil, displayAvatar: false), atIndex:0)
         
-        UIView.transitionWithView(messageTable,
-                                  duration: 0.5,
-                                  options: .TransitionCrossDissolve,
-                                  animations:
-                                    { () -> Void in
-                                    self.messageTable.reloadData()
-                                    },
-                                  completion: nil)
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        activityView.hidden = false
+        activityView.startAnimating()
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        messageTable.addSubview(activityView)
+        messageTable.bringSubviewToFront(activityView)
+        setActivityViewConstraints(activityView)
+        messageTable.reloadData()
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+            
+            self.messages?.removeFirst()
+            nextMessage.setLastMessageReceivedTimeToNow()
+            self.messagesToAdd?.removeFirst()
+            self.messages?.insert(nextMessage, atIndex: 0)
+            activityView.removeFromSuperview()
+            
+            UIView.transitionWithView(self.messageTable,
+                                      duration: 0.5,
+                                      options: .TransitionCrossDissolve,
+                                      animations:
+                                        { () -> Void in
+                                            self.messageTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+                                        },
+                                      completion: nil)
+        }
         
         
     }
@@ -52,6 +68,17 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
         
         messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
+    }
+    
+    
+    private func setActivityViewConstraints(activityView: UIActivityIndicatorView) {
+        
+        let horizontalConstraint = activityView.centerXAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.centerXAnchor)
+        let verticalConstraint = activityView.centerYAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.centerYAnchor)
+        let widthConstraint = activityView.widthAnchor.constraintEqualToAnchor(nil, constant: 100)
+        let heightConstraint = activityView.heightAnchor.constraintEqualToAnchor(nil, constant: 100)
+        
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
     }
     
     // Message Table Data Source
@@ -73,7 +100,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
             return UITableViewCell()
         }
 
-        cell.setupSubViews(message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime)
+        cell.setupSubViews(message.displayAvatar, name: message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime)
         
         return cell
     }

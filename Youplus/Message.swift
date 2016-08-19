@@ -14,26 +14,30 @@ class Message: NSObject, NSCoding {
     private(set) var friendName: String
     private(set) var lastMessage: String
     private(set) var lastMessageReceivedTime: NSDate?
+    private(set) var displayAvatar: Bool
     
-    init(avatarFilename: String, friendName: String, lastMessage: String, lastMessageReceivedTime: NSDate?) {
+    init(avatarFilename: String, friendName: String, lastMessage: String, lastMessageReceivedTime: NSDate?, displayAvatar: Bool) {
         self.avatarFilename = avatarFilename
         self.friendName = friendName
         self.lastMessage = lastMessage
         self.lastMessageReceivedTime = lastMessageReceivedTime
+        self.displayAvatar = displayAvatar
     }
     
     required convenience init?(coder decoder: NSCoder) {
         guard let avatarFilename = decoder.decodeObjectForKey("avatarFilename") as? String,
             let friendName = decoder.decodeObjectForKey("friendName") as? String,
             let lastMessage = decoder.decodeObjectForKey("lastMessage") as? String,
-            let lastMessageReceivedTime = decoder.decodeObjectForKey("lastMessageReceivedTime") as? NSDate
+            let lastMessageReceivedTime = decoder.decodeObjectForKey("lastMessageReceivedTime") as? NSDate,
+            let displayAvatar = decoder.decodeObjectForKey("displayAvatar") as? Bool
             else { return nil } // decoding has failed
         
         self.init(
             avatarFilename: avatarFilename,
             friendName: friendName,
             lastMessage: lastMessage,
-            lastMessageReceivedTime: lastMessageReceivedTime
+            lastMessageReceivedTime: lastMessageReceivedTime,
+            displayAvatar: displayAvatar
         )
         
     }
@@ -43,6 +47,7 @@ class Message: NSObject, NSCoding {
         coder.encodeObject(friendName, forKey: "friendName")
         coder.encodeObject(lastMessage, forKey: "lastMessage")
         coder.encodeObject(lastMessageReceivedTime, forKey: "lastMessageReceivedTime")
+        coder.encodeObject(displayAvatar, forKey: "displayAvatar")
     }
     
     func setLastMessageReceivedTimeToNow() {

@@ -16,11 +16,11 @@ class MessageCell: UITableViewCell {
     private var timeFrame: UILabel?
     private var cellMargins: UILayoutGuide! // must be automatically set
     
-    func setupSubViews(name: String, message: String, date: NSDate?) {
+    func setupSubViews(displayAvatar: Bool, name: String, message: String, date: NSDate?) {
         resetReusableCell()
         cellMargins = layoutMarginsGuide
         
-        setupAvatarFrame()
+        setupAvatarFrame(displayAvatar)
         setupNameFrame(name)
         setupMessageFrame(message)
         setupTimeFrame(date)
@@ -33,9 +33,11 @@ class MessageCell: UITableViewCell {
         timeFrame?.removeFromSuperview()
     }
     
-    private func setupAvatarFrame() {
+    private func setupAvatarFrame(displayAvatar: Bool) {
         avatarFrame = UIImageView(frame: CGRectMake(10, 12.5, 75, 75))
-        avatarFrame?.image = UIImage(named: MessageConstants.avatarName)
+        if displayAvatar {
+            avatarFrame?.image = UIImage(named: MessageConstants.avatarName)
+        }
         avatarFrame?.contentMode = .Center
         
         // http://stackoverflow.com/questions/4414221/uiimage-in-a-circle
@@ -97,12 +99,13 @@ class MessageCell: UITableViewCell {
         dateFormatter.timeZone = NSTimeZone.systemTimeZone()
         dateFormatter.dateFormat = "MMM dd, HH:mm"
         
-        guard let unwrappedDate = date else {
-            print("No date available")
-            return
+        if date == nil {
+            timeFrame?.text = ""
+        } else {
+            timeFrame?.text = dateFormatter.stringFromDate(date!)
+
         }
-        
-        timeFrame?.text = dateFormatter.stringFromDate(unwrappedDate)
+    
         timeFrame?.textAlignment = .Right
         
         if timeFrame != nil {
