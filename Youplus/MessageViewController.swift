@@ -22,42 +22,20 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func addMessage(sender: UIBarButtonItem) {
         
-        guard let nextMessage = messagesToAdd?.first else {
-            let alert = UIAlertController(title: "Tha Tha That's all Folks!! :)", message: "Kanye is tired.", preferredStyle: .Alert)
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            presentViewController(alert, animated: true, completion: nil)
+        guard let nextMessage = updateTableWithNewCell() else {
+            print("Could not retrieve next message")
             return
         }
         
-        messages?.removeLast()
-        messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: nil, displayAvatar: false), atIndex:0)
+        guard let cellChanging = messageTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) else {
+            print("could not find cell to change")
+            return
+        }
         
-        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        activityView.hidden = false
-        activityView.startAnimating()
-        activityView.translatesAutoresizingMaskIntoConstraints = false
-        messageTable.addSubview(activityView)
-        messageTable.bringSubviewToFront(activityView)
-        setActivityViewConstraints(activityView)
-        messageTable.reloadData()
-        
+        let activityView = displayActivityView(cellChanging)
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-            
-            self.messages?.removeFirst()
-            nextMessage.setLastMessageReceivedTimeToNow()
-            self.messagesToAdd?.removeFirst()
-            self.messages?.insert(nextMessage, atIndex: 0)
-            activityView.removeFromSuperview()
-            
-            UIView.transitionWithView(self.messageTable,
-                                      duration: 0.5,
-                                      options: .TransitionCrossDissolve,
-                                      animations:
-                                        { () -> Void in
-                                            self.messageTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
-                                        },
-                                      completion: nil)
+            self.replaceBlankCell(nextMessage, activityView: activityView)
         }
         
         
@@ -70,16 +48,62 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
     }
     
-    
-    private func setActivityViewConstraints(activityView: UIActivityIndicatorView) {
+    private func updateTableWithNewCell() -> Message? {
         
-        let horizontalConstraint = activityView.centerXAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.centerXAnchor)
-        let verticalConstraint = activityView.centerYAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.centerYAnchor)
-        let widthConstraint = activityView.widthAnchor.constraintEqualToAnchor(nil, constant: 100)
-        let heightConstraint = activityView.heightAnchor.constraintEqualToAnchor(nil, constant: 100)
+        guard let nextMessage = messagesToAdd?.first else {
+            let alert = UIAlertController(title: "Tha Tha That's all Folks!! :)", message: "Kanye is tired.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+            return nil
+        }
         
-        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        messages?.removeLast()
+        messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: nil, displayAvatar: false), atIndex:0)
+        
+        messageTable.reloadData()
+        
+        return nextMessage
     }
+    
+    private func displayActivityView(cellChanging: UITableViewCell) -> UIActivityIndicatorView {
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        activityView.startAnimating()
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cellChanging.contentView.addSubview(activityView)
+        cellChanging.contentView.bringSubviewToFront(activityView)
+        
+        setActivityViewConstraints(cellChanging.contentView, activityView: activityView)
+        return activityView
+    }
+    
+    private func replaceBlankCell(nextMessage: Message, activityView: UIActivityIndicatorView) {
+        messages?.removeFirst()
+        nextMessage.setLastMessageReceivedTimeToNow()
+        messagesToAdd?.removeFirst()
+        messages?.insert(nextMessage, atIndex: 0)
+        activityView.removeFromSuperview()
+        
+        UIView.transitionWithView(messageTable,
+                                  duration: 0.5,
+                                  options: .TransitionCrossDissolve,
+                                  animations:
+            { () -> Void in
+                self.messageTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+            },
+                                  completion: nil)
+    }
+    
+    
+    private func setActivityViewConstraints(cellView: UIView, activityView: UIActivityIndicatorView) {
+        
+        let horizontalConstraint = activityView.centerXAnchor.constraintEqualToAnchor(cellView.layoutMarginsGuide.centerXAnchor)
+        let verticalConstraint = activityView.centerYAnchor.constraintEqualToAnchor(cellView.layoutMarginsGuide.centerYAnchor)
+        
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint])
+    }
+    
     
     // Message Table Data Source
     

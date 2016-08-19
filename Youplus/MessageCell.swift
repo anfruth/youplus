@@ -22,7 +22,7 @@ class MessageCell: UITableViewCell {
         
         setupAvatarFrame(displayAvatar)
         setupNameFrame(name)
-        setupMessageFrame(message)
+        setupMessageFrame(displayAvatar, message: message)
         setupTimeFrame(date)
     }
     
@@ -72,8 +72,11 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func setupMessageFrame(message: String) {
+    private func setupMessageFrame(displayAvatar: Bool, message: String) {
         messageFrame = UITextView()
+        if !displayAvatar {
+            messageFrame?.hidden = true
+        }
         
         messageFrame?.text = message
         messageFrame?.textContainer.maximumNumberOfLines = 2
