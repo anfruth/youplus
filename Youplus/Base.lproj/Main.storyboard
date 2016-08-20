@@ -47,18 +47,6 @@
                                     </mask>
                                 </variation>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youplus" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Zj-KAl">
-                                <rect key="frame" x="225" y="36" width="150" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="WEs-rf-6Pw"/>
-                                    <constraint firstAttribute="width" constant="150" id="h69-yc-zwe"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="WEs-rf-6Pw"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-Cs-hpy">
                                 <rect key="frame" x="0.0" y="80" width="600" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sl-4t-nZ5" id="ak1-xT-4jZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -86,6 +74,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="7Ue-Wp-84n"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youplus" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Zj-KAl">
+                                <rect key="frame" x="225" y="36" width="150" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WEs-rf-6Pw"/>
+                                    <constraint firstAttribute="width" constant="150" id="h69-yc-zwe"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WEs-rf-6Pw"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -115,6 +115,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addMessageButton" destination="by0-6S-b5A" id="fvh-o6-myr"/>
                         <outlet property="messageTable" destination="EFO-Cs-hpy" id="9Pa-rY-sRd"/>
                     </connections>
                 </viewController>

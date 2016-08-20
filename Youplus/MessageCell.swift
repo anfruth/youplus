@@ -16,14 +16,14 @@ class MessageCell: UITableViewCell {
     private var timeFrame: UILabel?
     private var cellMargins: UILayoutGuide! // must be automatically set
     
-    func setupSubViews(displayAvatar: Bool, name: String, message: String, date: NSDate?) {
+    func setupSubViews(displayAvatar: Bool, name: String, message: String, date: NSDate, changeDate: Bool) {
         resetReusableCell()
         cellMargins = layoutMarginsGuide
         
         setupAvatarFrame(displayAvatar)
         setupNameFrame(name)
         setupMessageFrame(displayAvatar, message: message)
-        setupTimeFrame(date)
+        setupTimeFrame(date, changeDate: changeDate)
     }
     
     private func resetReusableCell() {
@@ -96,17 +96,16 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func setupTimeFrame(date: NSDate?) {
+    private func setupTimeFrame(date: NSDate, changeDate: Bool) {
         timeFrame = UILabel()
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.systemTimeZone()
         dateFormatter.dateFormat = "MMM dd, HH:mm"
         
-        if date == nil {
+        if changeDate {
             timeFrame?.text = ""
         } else {
-            timeFrame?.text = dateFormatter.stringFromDate(date!)
-
+            timeFrame?.text = dateFormatter.stringFromDate(date)
         }
     
         timeFrame?.textAlignment = .Right

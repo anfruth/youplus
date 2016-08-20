@@ -11,16 +11,20 @@ import UIKit
 class MessageViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var messageTable: UITableView!
+    @IBOutlet weak var addMessageButton: UIBarButtonItem!
     
     private var messages: [Message]?
     private var messagesToAdd: [Message]?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateMessages()
+        
     }
     
     @IBAction func addMessage(sender: UIBarButtonItem) {
+        addMessageButton.enabled = false
         
         guard let nextMessage = updateTableWithNewCell() else {
             print("Could not retrieve next message")
@@ -36,16 +40,43 @@ class MessageViewController: UIViewController, UITableViewDataSource {
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
             self.replaceBlankCell(nextMessage, activityView: activityView)
+            self.addMessageButton.enabled = true
         }
-        
         
     }
     
     private func populateMessages() {
-        // already sorted in order by time, will treat as a queue as I add new messages.
-        messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
         
-        messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
+        guard let pathMessagesToAddArray = Message.getPathInDocumentDirectory("messagesToAddArrayM") else {
+            print("path for persisting messagesToAdd cannot be found")
+            return
+        }
+        
+        guard let pathMessagesArray = Message.getPathInDocumentDirectory("messagesArrayM") else {
+            print("path for persisting messages cannot be found")
+            return
+        }
+        
+        guard let unarchivedMessagesToAddArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesToAddArray) as? [Message] else {
+            messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
+            
+            // already sorted in order by time, will treat as a queue as I add new messages.
+            messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
+            return
+        }
+        
+        guard let unarchivedMessagesArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesArray) as? [Message] else {
+            
+            messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
+            
+            // already sorted in order by time, will treat as a queue as I add new messages.
+            messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
+            return
+        }
+        
+        messages = unarchivedMessagesArray
+        messagesToAdd = unarchivedMessagesToAddArray
+    
     }
     
     private func updateTableWithNewCell() -> Message? {
@@ -59,7 +90,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         }
         
         messages?.removeLast()
-        messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: nil, displayAvatar: false), atIndex:0)
+        messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: NSDate(), displayAvatar: false, changeDate: true), atIndex:0)
         
         messageTable.reloadData()
         
@@ -84,6 +115,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         messagesToAdd?.removeFirst()
         messages?.insert(nextMessage, atIndex: 0)
         activityView.removeFromSuperview()
+        persistMessages()
         
         UIView.transitionWithView(messageTable,
                                   duration: 0.5,
@@ -93,6 +125,34 @@ class MessageViewController: UIViewController, UITableViewDataSource {
                 self.messageTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
             },
                                   completion: nil)
+    }
+    
+    private func persistMessages() {
+        
+        guard let pathMessagesArray = Message.getPathInDocumentDirectory("messagesArrayM") else {
+            print("path for persisting messages cannot be found")
+            return
+        }
+        
+        guard let pathMessagesToAddArray = Message.getPathInDocumentDirectory("messagesToAddArrayM") else {
+            print("path for persisting messagesToAdd cannot be found")
+            return
+        }
+        
+        guard let messagesArray = messages else {
+            print("messages do not exist")
+            return
+        }
+        
+        guard let messagesToAddArray = messagesToAdd else {
+            print("messagesToAdd does not exist")
+            return
+        }
+        
+        print(NSKeyedArchiver.archiveRootObject(messagesArray, toFile: pathMessagesArray))
+        print(NSKeyedArchiver.archiveRootObject(messagesToAddArray, toFile: pathMessagesToAddArray))
+
+        print(pathMessagesToAddArray)
     }
     
     
@@ -124,7 +184,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        cell.setupSubViews(message.displayAvatar, name: message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime)
+        cell.setupSubViews(message.displayAvatar, name: message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime, changeDate: message.changeDate)
         
         return cell
     }
