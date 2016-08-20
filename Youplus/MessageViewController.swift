@@ -57,16 +57,8 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             return
         }
         
-        guard let unarchivedMessagesToAddArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesToAddArray) as? [Message] else {
-            messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
-            
-            // already sorted in order by time, will treat as a queue as I add new messages.
-            messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
-            return
-        }
-        
-        guard let unarchivedMessagesArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesArray) as? [Message] else {
-            
+        guard let unarchivedMessagesToAddArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesToAddArray) as? [Message],
+            let unarchivedMessagesArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesArray) as? [Message] else {
             messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
             
             // already sorted in order by time, will treat as a queue as I add new messages.
@@ -149,10 +141,9 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             return
         }
         
-        print(NSKeyedArchiver.archiveRootObject(messagesArray, toFile: pathMessagesArray))
-        print(NSKeyedArchiver.archiveRootObject(messagesToAddArray, toFile: pathMessagesToAddArray))
+        NSKeyedArchiver.archiveRootObject(messagesArray, toFile: pathMessagesArray)
+        NSKeyedArchiver.archiveRootObject(messagesToAddArray, toFile: pathMessagesToAddArray)
 
-        print(pathMessagesToAddArray)
     }
     
     

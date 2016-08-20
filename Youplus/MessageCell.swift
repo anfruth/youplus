@@ -59,7 +59,9 @@ class MessageCell: UITableViewCell {
     
     private func setupNameFrame(name: String) {
         nameFrame = UILabel()
+        nameFrame?.sizeToFit()
         nameFrame?.text = name
+        nameFrame?.font = UIFont.systemFontOfSize(18)
         
         if nameFrame != nil {
             addSubview(nameFrame!)
@@ -74,6 +76,7 @@ class MessageCell: UITableViewCell {
     
     private func setupMessageFrame(displayAvatar: Bool, message: String) {
         messageFrame = UITextView()
+        messageFrame?.textColor = UIColor.grayColor()
         if !displayAvatar {
             messageFrame?.hidden = true
         }
@@ -98,9 +101,20 @@ class MessageCell: UITableViewCell {
     
     private func setupTimeFrame(date: NSDate, changeDate: Bool) {
         timeFrame = UILabel()
+        timeFrame?.sizeToFit()
+        timeFrame?.font = UIFont.systemFontOfSize(12)
+        timeFrame?.textColor = UIColor.grayColor()
+        
+        let nameDescenderSpace = nameFrame?.font.descender
+        let timeDescenderSpace = timeFrame?.font.descender
+        
+        let moveTimeDownAmount = -1 * (abs(timeDescenderSpace!) - abs(nameDescenderSpace!)) // assumes nameDescender was set up
+        
+        
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.systemTimeZone()
-        dateFormatter.dateFormat = "MMM dd, HH:mm"
+        dateFormatter.dateFormat = "MMM dd HH:mm"
         
         if changeDate {
             timeFrame?.text = ""
@@ -114,7 +128,7 @@ class MessageCell: UITableViewCell {
             addSubview(timeFrame!)
             
             timeFrame?.translatesAutoresizingMaskIntoConstraints = false
-            setTimeFrameContraints()
+            setTimeFrameContraints(moveTimeDownAmount)
         }
     }
     
@@ -156,17 +170,17 @@ class MessageCell: UITableViewCell {
          NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraintRightSide, heightConstraint])
     }
     
-    private func setTimeFrameContraints() {
+    private func setTimeFrameContraints(moveTimeDownAmount: CGFloat) {
         
         guard let horizontalConstraint = timeFrame?.trailingAnchor.constraintEqualToAnchor(cellMargins.trailingAnchor, constant: -10) else {
             return
         }
         
-        guard let horizontalConstraintLeft = timeFrame?.leadingAnchor.constraintEqualToAnchor(nameFrame?.trailingAnchor, constant: -20) else {
+        guard let horizontalConstraintLeft = timeFrame?.leadingAnchor.constraintEqualToAnchor(nameFrame?.trailingAnchor) else {
             return
         }
         
-        guard let verticalConstraint = timeFrame?.centerYAnchor.constraintEqualToAnchor(nameFrame?.centerYAnchor) else {
+        guard let verticalConstraint = timeFrame?.centerYAnchor.constraintEqualToAnchor(nameFrame?.centerYAnchor, constant: moveTimeDownAmount) else {
             return
         }
         

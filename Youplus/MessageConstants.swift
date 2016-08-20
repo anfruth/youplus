@@ -30,14 +30,14 @@ struct MessageConstants {
     
     static let message5 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "I'm not married to a hobbit. I am married to a beautiful woman. Just because she smokes a pipe and lives underground does not make her a hobbit.", lastMessageReceivedTime: date5, displayAvatar: true, changeDate: false)
     
-    static let message6 = Message(avatarFilename: avatarName, friendName: "Kim K", lastMessage: "Did you just call me a hobbit? Kanye said so. How dare you.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: true)
+    static let message6 = Message(avatarFilename: avatarName, friendName: "Kim K", lastMessage: "Did you just call me a hobbit? Kanye said so. How dare you.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: false)
     
-    static let message7 = Message(avatarFilename: avatarName, friendName: "Officer McGradyyyyyyyyyyyyyyyyyyy", lastMessage: "We have reports of angry Hobbits heading your way. Consider them short and dangerous.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: true)
+    static let message7 = Message(avatarFilename: avatarName, friendName: "Officer McGradyyyyyyyyyyyyyyyyyyy", lastMessage: "We have reports of angry Hobbits heading your way. Consider them short and dangerous.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: false)
     
-    static let message8 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "Kim and I are coming to talk to you along with some of her friends who like to smoke pipes", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: true)
+    static let message8 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "Kim and I are coming to talk to you along with some of her friends who like to smoke pipes", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: false)
     
-    static let message9 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "I am the greatest.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: true)
+    static let message9 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "I am the greatest.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: false)
     
-    static let message10 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "Seriously, you better say I am, you better.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: true)
+    static let message10 = Message(avatarFilename: avatarName, friendName: "Kanye", lastMessage: "Seriously, you better say I am, you better.", lastMessageReceivedTime: NSDate(), displayAvatar: true, changeDate: false)
     
 }
