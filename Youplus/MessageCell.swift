@@ -10,11 +10,11 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
-    private var avatarFrame: UIImageView?
-    private var nameFrame: UILabel?
-    private var messageFrame: UITextView?
-    private var timeFrame: UILabel?
-    private var cellMargins: UILayoutGuide! // must be automatically set
+    private(set) var avatarFrame: UIImageView?
+    private(set) var nameFrame: UILabel?
+    private(set) var messageFrame: UITextView?
+    private(set) var timeFrame: UILabel?
+    private(set) var cellMargins: UILayoutGuide! // must be automatically set
     
     func setupSubViews(displayAvatar: Bool, name: String, message: String, date: NSDate, changeDate: Bool) {
         resetReusableCell()

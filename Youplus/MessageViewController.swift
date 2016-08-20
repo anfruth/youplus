@@ -15,26 +15,26 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     
     private var messages: [Message]?
     private var messagesToAdd: [Message]?
-    
+    private var cells: [MessageCell]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cells = [MessageCell(), MessageCell(), MessageCell(), MessageCell(), MessageCell()] // make sure this stays here as log as have implicitly unwrapped optional
         populateMessages()
-        
     }
+    
+    
     
     @IBAction func addMessage(sender: UIBarButtonItem) {
         addMessageButton.enabled = false
         
         guard let nextMessage = updateTableWithNewCell() else {
             print("Could not retrieve next message")
+            addMessageButton.enabled = true
             return
         }
         
-        guard let cellChanging = messageTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) else {
-            print("could not find cell to change")
-            return
-        }
+        let cellChanging = cells[0]
         
         let activityView = displayActivityView(cellChanging)
 
@@ -71,6 +71,11 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     
     }
     
+    private func displayUpdatingCell() -> UIActivityIndicatorView? {
+        let cellChanging = cells[0]
+        return displayActivityView(cellChanging)
+    }
+    
     private func updateTableWithNewCell() -> Message? {
         
         guard let nextMessage = messagesToAdd?.first else {
@@ -83,7 +88,6 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
         messages?.removeLast()
         messages?.insert(Message(avatarFilename: "", friendName: "", lastMessage: "", lastMessageReceivedTime: NSDate(), displayAvatar: false, changeDate: true), atIndex:0)
-        
         messageTable.reloadData()
         
         return nextMessage
@@ -163,16 +167,13 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(MessageConstants.messageCellID) as? MessageCell else {
-            print("could not dequeue cell, found nothing")
-            return UITableViewCell()
-        }
         
         let row = indexPath.row
+        let cell = cells[row]
         
         guard let message = messages?[row] else {
             print("could not get a message from messages array")
-            return UITableViewCell()
+            return MessageCell()
         }
 
         cell.setupSubViews(message.displayAvatar, name: message.friendName, message: message.lastMessage, date: message.lastMessageReceivedTime, changeDate: message.changeDate)
