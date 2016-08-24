@@ -16,13 +16,15 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     private var messages: [Message]?
     private var messagesToAdd: [Message]?
     private var cells: [MessageCell]!
+    private var timer: NSTimer? // temp fix to ?
+    private var nextMessage: Message!
+    private var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cells = [MessageCell(), MessageCell(), MessageCell(), MessageCell(), MessageCell()] // make sure this stays here as log as have implicitly unwrapped optional
         populateMessages()
     }
-    
     
     
     @IBAction func addMessage(sender: UIBarButtonItem) {
@@ -34,19 +36,35 @@ class MessageViewController: UIViewController, UITableViewDataSource {
             return
         }
         
+        self.nextMessage = nextMessage
+        
         let cellChanging = cells[0]
         
-        let activityView = displayActivityView(cellChanging)
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-            self.replaceBlankCell(nextMessage, activityView: activityView)
-            self.addMessageButton.enabled = true
-        }
+        activityView = displayActivityView(cellChanging)
         
+    
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(updateUIPostMessageDelay), userInfo: nil, repeats: false)
+
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+//            self.replaceBlankCell(nextMessage, activityView: activityView)
+//            self.addMessageButton.enabled = true
+//        }
+        
+    }
+    
+    func updateUIPostMessageDelay() {
+        self.replaceBlankCell(nextMessage, activityView: activityView)
+        self.addMessageButton.enabled = true
     }
     
     @IBAction func resetMessages(sender: UIBarButtonItem) {
         
+        if let timerUnwrapped = timer {
+                timerUnwrapped.invalidate()
+        }
+        
+        addMessageButton.enabled = true
         setDefaultMessages()
         messageTable.reloadData()
         
