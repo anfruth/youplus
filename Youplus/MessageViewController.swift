@@ -17,7 +17,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     private var messagesToAdd: [Message]?
     private var cells: [MessageCell]!
     private var timer: NSTimer? // temp fix to ?
-    private var nextMessage: Message!
+    private var nextMessage: Message?
     private var activityView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
@@ -50,7 +50,12 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     }
     
     func updateUIPostMessageDelay() {
-        self.replaceBlankCell(nextMessage, activityView: activityView)
+        guard let nextMessageUnwrapped = nextMessage else {
+            print("nextMessage does not exist, big problem")
+            return
+        }
+        
+        self.replaceBlankCell(nextMessageUnwrapped, activityView: activityView)
         self.addMessageButton.enabled = true
     }
     
