@@ -45,6 +45,13 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
     }
     
+    @IBAction func resetMessages(sender: UIBarButtonItem) {
+        
+        setDefaultMessages()
+        messageTable.reloadData()
+        
+    }
+    
     private func populateMessages() {
         
         guard let pathMessagesToAddArray = Message.getPathInDocumentDirectory("messagesToAddArrayM") else {
@@ -59,16 +66,20 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
         guard let unarchivedMessagesToAddArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesToAddArray) as? [Message],
             let unarchivedMessagesArray = NSKeyedUnarchiver.unarchiveObjectWithFile(pathMessagesArray) as? [Message] else {
-            messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
-            
-            // already sorted in order by time, will treat as a queue as I add new messages.
-            messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
+            setDefaultMessages()
             return
         }
         
         messages = unarchivedMessagesArray
         messagesToAdd = unarchivedMessagesToAddArray
     
+    }
+    
+    private func setDefaultMessages() {
+        messagesToAdd = [MessageConstants.message6, MessageConstants.message7, MessageConstants.message8, MessageConstants.message9, MessageConstants.message10]
+        
+        // already sorted in order by time, will treat as a queue as I add new messages.
+        messages = [MessageConstants.message5, MessageConstants.message4, MessageConstants.message3, MessageConstants.message2, MessageConstants.message1]
     }
     
     private func displayUpdatingCell() -> UIActivityIndicatorView? {

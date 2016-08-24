@@ -39,6 +39,11 @@
                                             </barButtonItem>
                                             <barButtonItem id="37c-xn-Mgn"/>
                                         </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Reset" id="t2S-w2-q9K">
+                                            <connections>
+                                                <action selector="resetMessages:" destination="BYZ-38-t0r" id="5XX-U4-Aws"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                                 <variation key="default">
@@ -53,16 +58,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="520" id="zj8-0P-ShR"/>
                                 </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="7sl-4t-nZ5" customClass="MessageCell" customModule="Youplus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sl-4t-nZ5" id="ak1-xT-4jZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                                 <variation key="default">
                                     <mask key="constraints">
