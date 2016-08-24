@@ -45,11 +45,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(updateUIPostMessageDelay), userInfo: nil, repeats: false)
-
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-//            self.replaceBlankCell(nextMessage, activityView: activityView)
-//            self.addMessageButton.enabled = true
-//        }
+        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
         
     }
     
@@ -65,6 +61,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         }
         
         addMessageButton.enabled = true
+        activityView.stopAnimating()
         setDefaultMessages()
         messageTable.reloadData()
         
