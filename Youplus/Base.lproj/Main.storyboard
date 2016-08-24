@@ -39,7 +39,7 @@
                                             </barButtonItem>
                                             <barButtonItem id="37c-xn-Mgn"/>
                                         </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Reset" id="t2S-w2-q9K">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="t2S-w2-q9K">
                                             <connections>
                                                 <action selector="resetMessages:" destination="BYZ-38-t0r" id="5XX-U4-Aws"/>
                                             </connections>
