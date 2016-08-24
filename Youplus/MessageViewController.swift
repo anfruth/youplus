@@ -18,12 +18,13 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     private var cells: [MessageCell]!
     private var timer: NSTimer? // temp fix to ?
     private var nextMessage: Message!
-    private var activityView: UIActivityIndicatorView!
+    private var activityView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cells = [MessageCell(), MessageCell(), MessageCell(), MessageCell(), MessageCell()] // make sure this stays here as log as have implicitly unwrapped optional
         populateMessages()
+        
     }
     
     
@@ -32,7 +33,6 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
         guard let nextMessage = updateTableWithNewCell() else {
             print("Could not retrieve next message")
-            addMessageButton.enabled = true
             return
         }
         
@@ -60,8 +60,11 @@ class MessageViewController: UIViewController, UITableViewDataSource {
                 timerUnwrapped.invalidate()
         }
         
+        if let activityViewUnwrapped = activityView {
+            activityViewUnwrapped.stopAnimating()
+        }
+        
         addMessageButton.enabled = true
-        activityView.stopAnimating()
         setDefaultMessages()
         messageTable.reloadData()
         
@@ -87,6 +90,10 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         
         messages = unarchivedMessagesArray
         messagesToAdd = unarchivedMessagesToAddArray
+        
+        if unarchivedMessagesToAddArray.count == 0 {
+            addMessageButton.enabled = false
+        }
     
     }
     
@@ -105,6 +112,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     private func updateTableWithNewCell() -> Message? {
         
         guard let nextMessage = messagesToAdd?.first else {
+            
             let alert = UIAlertController(title: "Tha Tha That's all Folks!! :)", message: "Kanye is tired.", preferredStyle: .Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
@@ -131,12 +139,12 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         return activityView
     }
     
-    private func replaceBlankCell(nextMessage: Message, activityView: UIActivityIndicatorView) {
+    private func replaceBlankCell(nextMessage: Message, activityView: UIActivityIndicatorView?) {
         messages?.removeFirst()
         nextMessage.setLastMessageReceivedTimeToNow()
         messagesToAdd?.removeFirst()
         messages?.insert(nextMessage, atIndex: 0)
-        activityView.removeFromSuperview()
+        activityView?.removeFromSuperview()
         persistMessages()
         
         UIView.transitionWithView(messageTable,
